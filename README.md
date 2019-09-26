@@ -154,7 +154,16 @@ left_fit_cr, right_fit_cr = self.fit_poly_for_lines(self.left_lane.allx*xm,
                                                     self.right_lane.ally*ym)
              
 ```
-To compute the position of the vehicle with respect to center:
+To compute the position of the vehicle with respect to center we first take the center of the image in x-axis and compute its coordinate in a wraped image using defined src and dst points. For each frame we compute the center of the detected lane lines via using method find_lane_center : 
+
+```python
+# h is the height of an image
+left_lane_c = left_fit[0]*h**2 + left_fit[1]*h + left_fit[2] # compute x-coordinate for left line
+right_lane_c = right_fit[0]*h**2 + right_fit[1]*h + right_fit[2] # compute x-coordinate for right line
+return left_lane_c + (right_lane_c - left_lane_c) /2 # find the center between two lines 
+             
+```
+In a pipline we take the difference between this two points. 
 
 ---
 
