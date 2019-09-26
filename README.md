@@ -125,20 +125,21 @@ Undistorted image          |  Warped image
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Class LaneDetector contains the code which identifies lane-line pixels using a histogram method, specifically the method detect_lines_images. After the pixels are identified we use a 2nd order polynomial to fit the lane lines pixels and get the coefficients of curves.
 
-![alt text][image5]
+---
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+### Pipeline (video)
 
-I did this in lines # through # in my code in `my_other_file.py`
+#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+Here's a [link to my video result](./project_video.mp4)
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+Video_pipeline invokes all the steps described for the images plus advanced search for lane lines pixels, calculating the curvature and position of a vehicle.
 
-![alt text][image6]
+The video pipeline function process_video uses two instances of class Line, left_line, right_line. For identifying the lane lines pixels it uses the class LaneDetector, specifically method detect_lines_video. This method initially apllies the histogram method (to the first frame) using another method of this class find_lanes_w_histogram. For the following frames search of lane lines pixels will be performed using method search_around_poly, which searchs within the borders of previously detected lines plus margin. For each frame detect_lines_video performs sanity check; it checks that the the difference between first coefficients of the lines is less than 0.1 - by these means we check that lane lines are roughly parallel. If not we plot the values from the previous frame and for the next one we strat again with the histogram method. This method also performs averaging between last n-frames to make lane lines smother.  
 
+To calculate the radius of curvature we use the following formula:
 
 ```python
 src = np.float32(
@@ -152,13 +153,7 @@ dst = np.float32(
     [(img_size[0] * 3 / 4), img_size[1]],
     [(img_size[0] * 3 / 4), 0]])
 ```
----
-
-### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-Here's a [link to my video result](./project_video.mp4)
+To compute the position of the vehicle with respect to center:
 
 ---
 
