@@ -85,6 +85,9 @@ The figure below shows the main stages of the pipeline:
 Undistorted image          |  Thresholded image       |  Warped image          |  Detected Lines           |  Final Image
 :-------------------------:|:------------------------:|:----------------------:|:-------------------------:|:-------------------------:
 ![alt text][image11]       |  ![alt text][image12]    |   ![alt text][image13] |  ![alt text][image14]     |  ![alt text][image15]  
+![alt text][image21]       |  ![alt text][image22]    |   ![alt text][image23] |  ![alt text][image24]     |  ![alt text][image25] 
+![alt text][image31]       |  ![alt text][image32]    |   ![alt text][image33] |  ![alt text][image34]     |  ![alt text][image35] 
+![alt text][image41]       |  ![alt text][image42]    |   ![alt text][image43] |  ![alt text][image44]     |  ![alt text][image45] 
 
 #### 1. Provide an example of a distortion-corrected image.
 
