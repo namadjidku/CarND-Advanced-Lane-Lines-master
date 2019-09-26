@@ -41,8 +41,8 @@ The goals / steps of this project are the following:
 
 [image3]: ./test_images/test4.jpg
 [image4]: ./output_images/undistort_test4.jpg
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image5]: ./examples/test6.jpg
+[image6]: ./output_images/binary_test6.jpg
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
@@ -92,9 +92,13 @@ Original image             |  Undistorted image
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color and gradient thresholds to generate a binary image. The class ThresholdProcesser is responsible for image thresholding. It has two methods thresholds and color_transform. Thresholds method applies sobel operator to an image in both x and y directions with threshold(10, 150) and filters the image by magnitude and direction of gradient with thresholds (100, 255)  and (0.7, 1.4) respectively. Initially, color_transform method was working only with the saturation channel; values were obtained from converting an image from RGB space to HLS. With this combination of thresholds (gradient and saturation channel), the program could not properly identify the lane lines where there was a sequence of shadow and light frames. Adding thresholding the lightness channel with threshold (150, 255) from LAB color space improved the level of recognition. 
 
-![alt text][image3]
+All values for thresholds were obtained manually. Following is the example of a thresholded image:
+
+Original image             |  Thresholded image
+:-------------------------:|:-------------------------:
+![alt text][image5]       |  ![alt text][image6]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
