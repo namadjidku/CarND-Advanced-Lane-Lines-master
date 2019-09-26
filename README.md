@@ -39,10 +39,8 @@ The goals / steps of this project are the following:
 [image34]: ./output_images/final_test1.jpg
 [image44]: ./output_images/final_test5.jpg
 
-
-
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[image3]: ./test_images/test4.jpg
+[image4]: ./output_images/undistort_test4.jpg
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
@@ -86,8 +84,11 @@ Undistorted image          |  Thresholded image       |  Warped image          |
 
 #### 1. Provide an example of a distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+The correction of distortion was performed using the method undistort_image of the class Camera. Following is the exmaple of an undistorted image:
+
+Original image             |  Undistorted image
+:-------------------------:|:-------------------------:
+![alt text][image3]       |  ![alt text][image4]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
