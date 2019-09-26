@@ -34,15 +34,10 @@ The goals / steps of this project are the following:
 [image33]: ./output_images/warped_test1.jpg
 [image43]: ./output_images/warped_test5.jpg
 
-[image14]: ./output_images/warped_lines_test3.jpg
-[image24]: ./output_images/warped_lines_straight_lines1.jpg
-[image34]: ./output_images/warped_lines_test1.jpg
-[image44]: ./output_images/warped_lines_test5.jpg
-
-[image15]: ./output_images/final_test3.jpg
-[image25]: ./output_images/final_lines1.jpg
-[image35]: ./output_images/final_test1.jpg
-[image45]: ./output_images/final_test5.jpg
+[image14]./output_images/final_test3.jpg
+[image24]: ./output_images/final_straight_lines1.jpg
+[image34]: ./output_images/final_test1.jpg
+[image44]: ./output_images/final_test5.jpg
 
 
 
@@ -82,12 +77,12 @@ The image pipeline process_image function invokes the following functions:
 
 The figure below shows the main stages of the pipeline:
 
-Undistorted image          |  Thresholded image       |  Warped image          |  Detected Lines           |  Final Image
-:-------------------------:|:------------------------:|:----------------------:|:-------------------------:|:-------------------------:
-![alt text][image11]       |  ![alt text][image12]    |   ![alt text][image13] |  ![alt text][image14]     |  ![alt text][image15]  
-![alt text][image21]       |  ![alt text][image22]    |   ![alt text][image23] |  ![alt text][image24]     |  ![alt text][image25] 
-![alt text][image31]       |  ![alt text][image32]    |   ![alt text][image33] |  ![alt text][image34]     |  ![alt text][image35] 
-![alt text][image41]       |  ![alt text][image42]    |   ![alt text][image43] |  ![alt text][image44]     |  ![alt text][image45] 
+Undistorted image          |  Thresholded image       |  Warped image          |  Detected Lines           
+:-------------------------:|:------------------------:|:----------------------:|:-------------------------:
+![alt text][image11]       |  ![alt text][image12]    |   ![alt text][image13] |  ![alt text][image14]     
+![alt text][image21]       |  ![alt text][image22]    |   ![alt text][image23] |  ![alt text][image24]      
+![alt text][image31]       |  ![alt text][image32]    |   ![alt text][image33] |  ![alt text][image34]     
+![alt text][image41]       |  ![alt text][image42]    |   ![alt text][image43] |  ![alt text][image44]     
 
 #### 1. Provide an example of a distortion-corrected image.
 
