@@ -172,3 +172,5 @@ In a pipline we take the difference between this two points.
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+
+On a challenge video the developed pipline did not work. The only one idea I have and this looks like a weak spot in the pipline is thresholding. Most probably the combinitation of thresholding techniques used for the main video does not work for some scenarios from the challenge video.   
