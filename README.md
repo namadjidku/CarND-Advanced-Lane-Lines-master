@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./output_images/original_calibration2.jpg "Original"
-[image2]: ./output_images/original_calibration2.jpg "Original"
+[image2]: ./output_images/undistorted_calibration2.jpg "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
@@ -42,7 +42,10 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  The computed camera calibration matrix and distortion coefficients are stored in the locatl class variables self.mtx and self.dist.
 
-![alt text][image1]
+Original image             |  Undistorted image
+:-------------------------:|:-------------------------:
+![alt text][image1]       |  ![alt text][image2]
+
 
 ### Pipeline (single images)
 
