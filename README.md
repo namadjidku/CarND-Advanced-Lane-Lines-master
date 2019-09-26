@@ -34,7 +34,7 @@ The goals / steps of this project are the following:
 [image33]: ./output_images/warped_test1.jpg
 [image43]: ./output_images/warped_test5.jpg
 
-[image14]./output_images/final_test3.jpg
+[image14]: ./output_images/final_test3.jpg
 [image24]: ./output_images/final_straight_lines1.jpg
 [image34]: ./output_images/final_test1.jpg
 [image44]: ./output_images/final_test5.jpg
