@@ -19,10 +19,10 @@ The goals / steps of this project are the following:
 [image2]: ./output_images/undistort_calibration2.jpg "Undistorted"
 
 
-[image11]: ./output_images/undistort_test3.jpg
-[image21]: ./output_images/undistort_straight_lines1.jpg
-[image31]: ./output_images/undistort_test1.jpg
-[image41]: ./output_images/undistort_test5.jpg
+[image11]: ./output_images/undistort_test3.jpg "Undistorted"
+[image21]: ./output_images/undistort_straight_lines1.jpg "Undistorted"
+[image31]: ./output_images/undistort_test1.jpg "Undistorted"
+[image41]: ./output_images/undistort_test5.jpg "Undistorted"
 
 [image12]: ./output_images/binary_test3.jpg
 [image22]: ./output_images/binary_straight_lines1.jpg
@@ -83,8 +83,8 @@ The image pipeline process_image function invokes the following functions:
 The figure below shows the main stages of the pipeline:
 
 Undistorted image          |  Thresholded image       |  Warped image          |  Detected Lines           |  Final Image
-:-------------------------:|:------------------------:|:----------------------:|:-----------------------__:|:-------------------------:
-![image11]                 |  ![image12]              |   ![image13]           |  ![image14]               |  ![image15]  
+:-------------------------:|:------------------------:|:----------------------:|:-------------------------:|:-------------------------:
+![alt text][image11]       |  ![alt text][image12]    |   ![alt text][image13] |  ![alt text][image14]     |  ![alt text][image15]  
 
 #### 1. Provide an example of a distortion-corrected image.
 
