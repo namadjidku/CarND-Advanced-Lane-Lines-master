@@ -17,6 +17,35 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/original_calibration2.jpg "Original"
 [image2]: ./output_images/undistort_calibration2.jpg "Undistorted"
+
+
+[image11]: ./output_images/undistort_test3.jpg
+[image21]: ./output_images/undistort_straight_lines1.jpg
+[image31]: ./output_images/undistort_test1.jpg
+[image41]: ./output_images/undistort_test5.jpg
+
+[image12]: ./output_images/binary_test3.jpg
+[image22]: ./output_images/binary_straight_lines1.jpg
+[image32]: ./output_images/binary_test1.jpg
+[image42]: ./output_images/binary_test5.jpg
+
+[image13]: ./output_images/warped_test3.jpg
+[image23]: ./output_images/warped_straight_lines1.jpg
+[image33]: ./output_images/warped_test1.jpg
+[image43]: ./output_images/warped_test5.jpg
+
+[image14]: ./output_images/warped_lines_test3.jpg
+[image24]: ./output_images/warped_lines_straight_lines1.jpg
+[image34]: ./output_images/warped_lines_test1.jpg
+[image44]: ./output_images/warped_lines_test5.jpg
+
+[image15]: ./output_images/final_test3.jpg
+[image25]: ./output_images/final_lines1.jpg
+[image35]: ./output_images/final_test1.jpg
+[image45]: ./output_images/final_test5.jpg
+
+
+
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
@@ -43,6 +72,19 @@ Original image             |  Undistorted image
 
 
 ### Pipeline (single images)
+
+The image pipeline process_image function invokes the following functions:
+* remove distortion;
+* threshold the image;
+* perform a prespective transform;
+* find lane pixels;
+* perform a reverse transform of the image with drawn lane lines.
+
+The figure below shows the main stages of the pipeline:
+
+Undistorted image          |  Thresholded image       |  Warped image          |  Detected Lines           |  Final Image
+:-------------------------:|:------------------------:|:----------------------:|:-----------------------__:|:-------------------------:
+![image11]                 |  ![image12]              |   ![image13]           |  ![image14]               |  ![image15]  
 
 #### 1. Provide an example of a distortion-corrected image.
 
