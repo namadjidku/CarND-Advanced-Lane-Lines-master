@@ -43,6 +43,10 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/undistort_test4.jpg
 [image5]: ./test_images/test6.jpg
 [image6]: ./output_images/binary_test6.jpg
+[image7]: ./output_images/undistort_straight_lines2.jpg
+[image8]: ./output_images/warped_straight_lines2.jpg
+
+
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./video_output/project_video.mp4 "Video"
 
@@ -108,15 +112,16 @@ This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 678, 443      | 919, 0        | 
+| 605, 443      | 285, 0      |
+| 285, 665      | 285, 665      |
+| 1019, 665     | 919, 665      |
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image:
 
-straight_lines2.jpg
-
+Undistorted image          |  Warped image
+:-------------------------:|:-------------------------:
+![alt text][image7]       |  ![alt text][image8]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
