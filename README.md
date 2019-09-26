@@ -45,9 +45,8 @@ The goals / steps of this project are the following:
 [image6]: ./output_images/binary_test6.jpg
 [image7]: ./output_images/undistort_straight_lines2.jpg
 [image8]: ./output_images/warped_straight_lines2.jpg
+[image9]: ./examples/formula.png 
 
-
-[image6]: ./examples/example_output.jpg "Output"
 [video1]: ./video_output/project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -141,17 +140,19 @@ The video pipeline function process_video uses two instances of class Line, left
 
 To calculate the radius of curvature we use the following formula:
 
+![alt text][image9]
+
+Before applying the formula, the method measure_curvature of the class LaneDetector recomputes the coefficients using method fit_poly_for_lines in respect to the meters/pixels ration.
+
 ```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+ym = 30/720 # meters per pixel in y dimension
+xm = 3.7/700 # meters per pixel in x dimension
+        
+left_fit_cr, right_fit_cr = self.fit_poly_for_lines(self.left_lane.allx*xm, 
+                                                    self.left_lane.ally*ym, 
+                                                    self.right_lane.allx*xm, 
+                                                    self.right_lane.ally*ym)
+             
 ```
 To compute the position of the vehicle with respect to center:
 
