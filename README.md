@@ -58,9 +58,7 @@ The goals / steps of this project are the following:
 
 Computing camera calibration is in the class Camera method compute_camera_calibration.
 
-We start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. We assume that the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time chessboard corners are successfully detected in a test image; with each successful chessboard detection we append (x, y) position of each corner in the image plane to `imgpoints`.
-
-I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  The computed camera calibration matrix and distortion coefficients are stored in the locatl class variables self.mtx and self.dist. The method undistort_image is responsible for the distortion correction; it passes the precomputed camera calibration matrix and distortion coefficients to cv2.undistort() to obtain undistorted images. The following is the result of calling method undistort_image for a chess image:
+We start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. We assume that the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time chessboard corners are successfully detected in a test image; with each successful chessboard detection we append (x, y) position of each corner in the image plane to `imgpoints`. At the next stage `objpoints` and `imgpoints` are used to compute the camera calibration and distortion coefficients - `cv2.calibrateCamera()` function.  The computed camera calibration matrix and distortion coefficients are stored in the class variables mtx and dist. The method undistort_image is responsible for the distortion correction; it passes the precomputed camera calibration matrix and distortion coefficients to cv2.undistort() to obtain the undistorted images. The following is the result of calling method undistort_image for a chess image:
 
 Original image             |  Undistorted image
 :-------------------------:|:-------------------------:
@@ -85,7 +83,7 @@ Undistorted image          |  Thresholded image       |  Warped image          |
 ![alt text][image31]       |  ![alt text][image32]    |   ![alt text][image33] |  ![alt text][image34]     
 ![alt text][image41]       |  ![alt text][image42]    |   ![alt text][image43] |  ![alt text][image44]     
 
-#### 1. Provide an example of a distortion-corrected image.
+#### 1. Example of a distortion-corrected image.
 
 The correction of distortion was performed using the method undistort_image of the class Camera. Following is the exmaple of an undistorted image:
 
@@ -93,9 +91,9 @@ Original image             |  Undistorted image
 :-------------------------:|:-------------------------:
 ![alt text][image3]       |  ![alt text][image4]
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### 2. Creating a thresholded binary image using color transforms and gradients. 
 
-I used a combination of color and gradient thresholds to generate a binary image. The class ThresholdProcesser is responsible for image thresholding. It has two methods thresholds and color_transform. Thresholds method applies sobel operator to an image in both x and y directions with threshold(10, 150) and filters the image by magnitude and direction of gradient with thresholds (100, 255)  and (0.7, 1.4) respectively. Initially, color_transform method was working only with the saturation channel; values were obtained from converting an image from RGB space to HLS. With this combination of thresholds (gradient and saturation channel), the program could not properly identify the lane lines where there was a sequence of shadow and light frames. Adding thresholding the lightness channel with threshold (150, 255) from LAB color space improved the level of recognition. 
+A combination of color and gradient thresholds was used to generate a binary image. The class ThresholdProcesser is responsible for image thresholding. It has two methods thresholds and color_transform. Thresholds method applies sobel operator to an image in both x and y directions with threshold(10, 150) and filters the image by magnitude and direction of gradient with thresholds (100, 255)  and (0.7, 1.4) respectively. Initially, color_transform method was working only with the saturation channel; values were obtained from converting an image from RGB space to HLS. With this combination of thresholds (gradient and saturation channel), the program could not properly identify the lane lines where there was a sequence of shadow and light frames. Adding thresholding the lightness channel with threshold (150, 255) from LAB color space improved the level of recognition. 
 
 All values for thresholds were obtained manually. Following is the example of a thresholded image:
 
@@ -103,11 +101,11 @@ Original image             |  Thresholded image
 :-------------------------:|:-------------------------:
 ![alt text][image5]       |  ![alt text][image6]
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+#### 3. Perspective transform.
 
-The code for my perspective transform is in the method perspective_transform of the class Camera. This method takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points. I chose the hardcode the source and destination points in the following manner:
+The code for perspective transform is in the method perspective_transform of the class Camera. This method takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points. 
 
-This resulted in the following source and destination points:
+Source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
@@ -116,7 +114,7 @@ This resulted in the following source and destination points:
 | 285, 665      | 285, 665      |
 | 1019, 665     | 919, 665      |
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image:
+We verified that my perspective transform was working as expected by drawing the `src` and `dst` points on a test image and its warped counterpart to verify that the lines appear parallel in the warped image:
 
 Undistorted image          |  Warped image
 :-------------------------:|:-------------------------:
