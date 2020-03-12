@@ -56,9 +56,9 @@ The goals / steps of this project are the following:
 
 ### Camera Calibration
 
-The class Camera is responsible for computing camera calibration. The code for this step is contained in the method compute_camera_calibration.
+Computing camera calibration is in the class Camera method compute_camera_calibration.
 
-I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
+We start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. We assume that the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time chessboard corners are successfully detected in a test image; with each successful chessboard detection we append (x, y) position of each corner in the image plane to `imgpoints`.
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  The computed camera calibration matrix and distortion coefficients are stored in the locatl class variables self.mtx and self.dist. The method undistort_image is responsible for the distortion correction; it passes the precomputed camera calibration matrix and distortion coefficients to cv2.undistort() to obtain undistorted images. The following is the result of calling method undistort_image for a chess image:
 
