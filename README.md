@@ -128,11 +128,11 @@ Class LaneDetector contains the code which identifies lane-line pixels using a h
 
 ### Pipeline (video)
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to the video with detected lines](./project_video.mp4)
 
 Video_pipeline invokes all the steps described for the images plus advanced search for lane lines pixels, calculating the curvature and position of a vehicle.
 
-The video pipeline function process_video uses two instances of class Line, left_line, right_line. For identifying the lane lines pixels it uses the class LaneDetector, specifically method detect_lines_video. This method initially apllies the histogram method (to the first frame) using another method of this class find_lanes_w_histogram. For the following frames search of lane lines pixels will be performed using method search_around_poly, which searchs within the borders of previously detected lines plus margin. For each frame detect_lines_video performs sanity check; it checks that the the difference between first coefficients of the lines is less than 0.1 - by these means we check that lane lines are roughly parallel. If not we plot the values from the previous frame and for the next one we strat again with the histogram method. This method also performs averaging between last n-frames to make lane lines smother.  
+The video pipeline function process_video uses two instances of class Line, left_line, right_line. For identifying the lane lines pixels it uses the class LaneDetector, specifically method detect_lines_video. This method initially apllies the histogram method (to the first frame) using another method of this class find_lanes_w_histogram. For the following frames search of lane lines pixels is performed using a method search_around_poly, which searchs within the borders of the previously detected lines plus margin. For each frame detect_lines_video performs sanity check; it checks that the the difference between first coefficients of the lines is less than 0.1 - by these means we check that lane lines are roughly parallel. If not we plot the values from the previous frame and for the next one we strat again with the histogram method. This method also performs averaging between last n-frames to make the lane lines smother.  
 
 To calculate the radius of curvature we use the following formula:
 
@@ -150,7 +150,7 @@ left_fit_cr, right_fit_cr = self.fit_poly_for_lines(self.left_lane.allx*xm,
                                                     self.right_lane.ally*ym)
              
 ```
-To compute the position of the vehicle with respect to center we first take the center of the image in x-axis and compute its coordinate in a wraped image using defined src and dst points. For each frame we compute the center of the detected lane lines via using method find_lane_center : 
+To compute the position of the vehicle with respect to center we first take the center of the image in x-axis and compute its coordinate in a warped image using defined src and dst points. For each frame we compute the center of the detected lane lines via using method find_lane_center : 
 
 ```python
 # h is the height of an image
@@ -162,11 +162,3 @@ return left_lane_c + (right_lane_c - left_lane_c) /2 # find the center between t
 In a pipline we take the difference between this two points. 
 
 ---
-
-### Discussion
-
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
-
-On a challenge video the developed pipline did not work. The only one idea I have and this looks like a weak spot in the pipline is thresholding. Most probably the combinitation of thresholding techniques used for the main video does not work for some scenarios from the challenge video.   
