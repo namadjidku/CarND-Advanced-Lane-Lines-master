@@ -120,15 +120,13 @@ Undistorted image          |  Warped image
 :-------------------------:|:-------------------------:
 ![alt text][image7]       |  ![alt text][image8]
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. Identify lane-line pixels.
 
-Class LaneDetector contains the code which identifies lane-line pixels using a histogram method, specifically the method detect_lines_images. After the pixels are identified we use a 2nd order polynomial to fit the lane lines pixels and get the coefficients of curves.
+Class LaneDetector contains the code which identifies lane-line pixels using a histogram method, specifically the method detect_lines_images. After the pixels are identified we use a 2nd order polynomial to fit the lane lines pixels and get the coefficients of the curves.
 
 ---
 
 ### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [link to my video result](./project_video.mp4)
 
